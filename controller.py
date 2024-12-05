@@ -12,17 +12,20 @@ class FrankaController:
     def get_action(self):
         action = np.zeros(9)
         gripper_button_pressed = False
+        ## joystick axis
         # map left joystrick to joint 1 and joint 2 angular velocity
-        action[0] = self.joystick.get_axis(0)  # left stick horizontal
-        action[1] = self.joystick.get_axis(1)  # left stick vertical
+        action[0] = self.joystick.get_axis(0)  
+        action[1] = self.joystick.get_axis(1)  
+        # rearrange so that if pull down the joint goes down
         action[0] = action[0] * -1
         action[1] = action[1] * -1
 
         # map right joystrick to joint 3 and joint 4 
         action[2] = self.joystick.get_axis(3) 
-        action[2] = self.joystick.get_axis(2)  
+        action[3] = self.joystick.get_axis(2)  
         action[3] = action[3] * -1
 
+        ## joystick buttons
         if self.joystick.get_button(0):
             action[4] = -1
             print('button 0 pressed') 
@@ -56,11 +59,10 @@ class FrankaController:
             action[7] = -1
             print('button 9 pressed')
         
-        # if action is not greater than 0.1 zero it out
         mask = np.abs(action) >= 0.1
         action = action * mask
+        # zero out action if it is not greater than 0.1
         action = np.where(action == -0.0, 0.0, action)
-
         if np.all(action == 0) and gripper_button_pressed == False:
             action = None
         else:

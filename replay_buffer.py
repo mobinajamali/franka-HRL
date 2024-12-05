@@ -2,7 +2,7 @@ import numpy as np
 
 class Buffer:
     def __init__(self, mem_size, input_dim, n_action,
-                 augment_data=None, augment_rewards=None,
+                 augment_data=False, augment_rewards=False,
                  expert_data_ratio=0.1, augment_noise_ratio=0.1):
         self.mem_size = mem_size
         self.mem_cnt = 0
@@ -21,7 +21,7 @@ class Buffer:
     def __len__(self):
         return self.mem_cnt
     
-    def can_sample(self, batch_size):
+    def ready(self, batch_size):
         if self.mem_cnt > (batch_size * 500):
             return True
         else:
@@ -40,6 +40,7 @@ class Buffer:
     def sample_memory(self, batch_size):
         mem = min(self.mem_cnt, self.mem_size)
         if self.expert_data_ratio > 0:
+            # force to use human data to some extend
             expert_data_quantity = int(batch_size * self.expert_data_ratio)
             random_batch = np.random.choice(mem, batch_size - expert_data_quantity)
             expert_batch = np.random.choice(self.expert_data_cutoff, expert_data_quantity)

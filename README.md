@@ -4,6 +4,8 @@
 
 This repository implements a hybrid **Imitation Learning (IL)** and **Reinforcement Learning (RL)** approach to address complex, multi-step robotic tasks in the sparse-reward environment of the Franka Kitchen. It integrates **human experiences** and **hierarchical learning** to enhance long-horizon task performance.  
 
+<img src="./thumbnails/Screencastfrom2024-10-2419-09-26-ezgif.com-video-to-gif-converter.gif" alt="Franka-HRL" width="350"/>
+
 ---
 
 ## Key Features  
@@ -26,14 +28,6 @@ This repository implements a hybrid **Imitation Learning (IL)** and **Reinforcem
 ### **Inspired By**:
 This project is inspired by the paper:  
 **[Relay Policy Learning: Solving Long-Horizon Tasks via Imitation and Reinforcement Learning](https://arxiv.org/abs/2012.13479)**  
-
-
-<!--# franka-HRL
-### Simple-speaker-listener-v4
-Demo| Results| 
-:-----------------------:|:-----------------------:|
-![](./MADDPG/thumbnails/video-ezgif.com-video-to-gif-converter.gif)| ![](./MADDPG/plots/maddpg.png)| 
-
 
 
 

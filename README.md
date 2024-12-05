@@ -1,43 +1,40 @@
-# franka-HRL
-Solving multi-stage, long-horizon robotic tasks in the Franka Kitchen gym environment via Imitation and Reinforcement Learning.
+# franka-HRL  
 
-- This two-phase approach consists of an imitation learning
-stage that produces goal-conditioned hierarchical policies, and a reinforcement learning phase that finetunes these policies for long-horizon task performance.
+**Solving Multi-Stage, Long-Horizon Robotic Tasks in the Franka Kitchen Gym Environment**  
 
-- Actor-critic with human experiences having weighted training
-- Franks Kitchen environment is a multi-step, sparsed reward environment whre 
-- In this project SAC algorithm has been used 
-- coordinated attempt of moving joints
+This repository implements a hybrid **Imitation Learning (IL)** and **Reinforcement Learning (RL)** approach to address complex, multi-step robotic tasks in the sparse-reward environment of the Franka Kitchen. It integrates **human experiences** and **hierarchical learning** to enhance long-horizon task performance.  
 
-- For complex tasks with minimum rewards, one of the ways to solve is to integrate human experiences into the mix. We will be integrating a game controller interface to work with the environment to pilot the robot to take actions such as opening the microwave for many times and build up a replay buffer of at least 30000 steps for the actor to train on. We then take the buffer and feed it in the standard actor-critic process
-- Used weighted replay buffer (for a defined amount of times the robot uses most of the experiences from the human generated data and for the next ones modifying the amount of reliancy to those experiences)
-- For multiple tasks: A form of hierachical RL where we have a meta agent with a static list of policies that is going to coordinate the different policies and choose each one when it comes to their turn to be loaded on the memory and be used on the environment to accomplish a certain task
+---
+
+## Key Features  
+### 🛠 **Two-Phase Learning Approach**  
+1. **Imitation Learning Phase**:  
+   - Creating **goal-conditioned hierarchical policies** based on human demonstrations.  
+   - Using a game controller interface to collect human-piloted robot actions for tasks like opening the microwave, building a comprehensive replay buffer.  
+   - Weighted replay buffers prioritize human-generated experiences during early training stages.  
+
+2. **Reinforcement Learning Phase**:  
+   - Fine-tuning policies with the **Soft Actor-Critic (SAC)** algorithm for efficient long-horizon task performance.  
+   - Dynamic reliance on human data ensures smooth transitions from imitation to independent policy learning.  
+
+3. **Hierarchical Reinforcement Learning**:
+    - Implementing a **meta-agent** to manage a static list of task-specific policies.  
+    - Coordinating and loading the appropriate sub-policy to solve individual subtasks in a multi-task environment.  
+
+---
+
+### **Inspired By**:
+This project is inspired by the paper:  
+**[Relay Policy Learning: Solving Long-Horizon Tasks via Imitation and Reinforcement Learning](https://arxiv.org/abs/2012.13479)**  
 
 
-<!-- ## 1. MADDPG (Multi Agent Deep Deterministic Policy Gradient):
-- MADDPG extends the DDPG algorithm to multi-agent settings by using centralized learning and decentralized execution. Each agent has a centralized critic that evaluates all agents' actions, while having a decentralized actor for decision-making.
-- Paper: [Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments](https://arxiv.org/abs/1706.02275)
-  
+<!--# franka-HRL
 ### Simple-speaker-listener-v4
 Demo| Results| 
 :-----------------------:|:-----------------------:|
 ![](./MADDPG/thumbnails/video-ezgif.com-video-to-gif-converter.gif)| ![](./MADDPG/plots/maddpg.png)| 
 
-### :bell: More algorithms and enhancements are coming soon!
-
-## Installation
-```bash
-git@github.com:mobinajamali/franka-HRL.git
-```
-```shell
-pip install -r requirements.txt
-```
 
 
-
-## Acknowledgement
-- Credits go to [Robert Cowher](https://github.com/bobcowher) for his brilliant course!
-- 
--->
 
 

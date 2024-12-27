@@ -9,7 +9,7 @@ This repository implements a hybrid **Imitation Learning (IL)** and **Reinforcem
 ---
 
 ## Key Features  
-### 🛠 **Two-Phase Learning Approach**  
+### 🛠 **Three-Phase Learning Approach**  
 1. **Imitation Learning Phase**:  
    - Creating **goal-conditioned hierarchical policies** based on human demonstrations.  
    - Using a game controller interface to collect human-piloted robot actions for tasks like opening the microwave, building a comprehensive replay buffer.  
